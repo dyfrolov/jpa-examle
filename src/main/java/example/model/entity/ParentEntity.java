@@ -16,9 +16,21 @@ public class ParentEntity {
 @Id
 private String id; 
 private String name;
+private boolean enabled;
+
+
+public boolean isEnabled() {
+	return enabled;
+}
+
+public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
+}
 
 @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 private List<ParentChildEntity> childs;
+@OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+private List<ParentTagEntity> tags;
 
 public String getId() {
 	return id;
@@ -71,10 +83,9 @@ public boolean equals(Object obj) {
 
 @Override
 public String toString() {
-	return "ParentEntity [id=" + id + ", name=" + name + ", childs=" + childs + "]";
+	return "ParentEntity [id=" + id + ", name=" + name + ", enabled=" + enabled + ", childs=" + childs + ", tags="
+			+ tags + "]";
 }
-
-
 
 
 }

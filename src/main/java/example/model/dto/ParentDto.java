@@ -2,13 +2,17 @@ package example.model.dto;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 
 public class ParentDto {
 private String id;
 private String name;
+private boolean enabled;
+public boolean isEnabled() {
+	return enabled;
+}
+public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
+}
 private List<ChildDto> childs;
 @Override
 public int hashCode() {
@@ -53,7 +57,7 @@ public void setChilds(List<ChildDto> childs) {
 }
 @Override
 public String toString() {
-	return "ParentDto [id=" + id + ", name=" + name + ", childs=" + childs + "]";
+	return "ParentDto [id=" + id + ", name=" + name + ", enabled=" + enabled + ", childs=" + childs + "]";
 }
 
 
